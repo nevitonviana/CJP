@@ -42,8 +42,8 @@ class _OcorrenciaState extends State<Ocorrencia> {
                     CustomtextField(
                       hintText: "Descrição",
                     ),
-                    RaisedButton(
-                      onPressed: ()=> Navigator.pop(context),
+                     RaisedButton(
+                      onPressed: () => Navigator.pop(context),
                       child: Text("Enviar"),
                     )
                   ],
