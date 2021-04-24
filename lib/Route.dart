@@ -1,3 +1,4 @@
+import 'package:cjp/Pages_View/Detalhe_Da_Ocorencia.dart';
 import 'package:cjp/Pages_View/Home.dart';
 import 'package:cjp/Pages_View/Registro_Prefil.dart';
 import 'package:cjp/Pages_View/ocorrencia.dart';
@@ -10,6 +11,7 @@ class RouteGererator {
   static const String rota_Login = "/";
   static const String rota_Registro = "/registro";
   static const String rote_Ocorencias = "/ocorencias";
+  static const String rote_Detalhe_Ocorencia = "/detalhe";
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
@@ -28,6 +30,9 @@ class RouteGererator {
         break;
       case "/ocorencias":
         return MaterialPageRoute(builder: (_) => Ocorrencia());
+        break;
+      case "/detalhe":
+        return MaterialPageRoute(builder: (_) => Detalhe_Da_Ocorencia());
         break;
       default:
         _erroRota();

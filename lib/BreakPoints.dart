@@ -1,0 +1,1 @@
+const mobile_breakPoint = 450;
