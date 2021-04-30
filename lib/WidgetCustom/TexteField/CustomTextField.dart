@@ -13,6 +13,8 @@ class CustomtextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(left: 15, right: 15),
+      width: 350,
       child: TextField(
         controller: this.textEditingControllercontroller,
         keyboardType: this.textInputType,

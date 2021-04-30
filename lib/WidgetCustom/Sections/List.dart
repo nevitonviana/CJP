@@ -1,3 +1,4 @@
+import 'package:cjp/Route.dart';
 import 'package:flutter/material.dart';
 
 class Lista extends StatefulWidget {
@@ -20,6 +21,7 @@ class _ListaState extends State<Lista> {
         return Container(
           child: Card(
             child: ListTile(
+              onTap: ()=>Navigator.pushNamed(context, RouteGererator.rote_Detalhe_Ocorencia),
               title: Text("Sao Sebastiao"),
               subtitle: Text("Acendente de carro"),
             ),

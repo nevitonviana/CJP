@@ -1,6 +1,7 @@
 import 'package:cjp/WidgetCustom/Sections/List.dart';
 import 'package:cjp/WidgetCustom/AppBar/Web_AppBar.dart';
 import 'package:cjp/WidgetCustom/AppBar/Mobile_AppBar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../BreakPoints.dart';
 import '../Route.dart';
@@ -29,14 +30,46 @@ class _HomeState extends State<Home> {
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 1000),
               child: ListView(
-                children: [Lista()],
+                children: [
+                  Container(
+                    height: 45,
+                    margin: EdgeInsets.all(15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        DropdownButton(
+                          iconSize: 30,
+                          elevation: 6,
+                          icon: Icon(Icons.location_city_rounded,
+                              color: Colors.black),
+                          hint: Text("Cidade"),
+                        ),
+                        SizedBox(
+                          width: 20,
+                        ),
+                        DropdownButton(
+                          elevation: 6,
+                          icon: Icon(
+                            Icons.location_city_rounded,
+                            color: Colors.black,
+                          ),
+                          hint: Text("Cidade"),
+                          items: [],
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Lista()
+                ],
               ),
             ),
           ),
           drawer: Drawer(
             elevation: 3,
             child: ListView(
-              padding: EdgeInsets.zero,
               children: [
                 DrawerHeader(
                   child: Text("Prefil"),
@@ -45,7 +78,7 @@ class _HomeState extends State<Home> {
                 ListTile(
                   leading: Icon(Icons.input),
                   title: Text('Bem-Vindo'),
-                  onTap: () => {},
+                  onTap: () => Navigator.pushNamed(context, RouteGererator.rote_Ocorencias),
                 ),
                 ListTile(
                   leading: Icon(Icons.settings),

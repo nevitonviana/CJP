@@ -7,18 +7,24 @@ class Desktop_AppBar_Custom extends StatelessWidget {
       backgroundColor: Colors.grey,
       toolbarHeight: 75,
       centerTitle: true,
-      title: Row(
-        children: [
-          Expanded(
-            child: Column(
-              children: [
-                Text("CJP"),
-                Text("Centro De Ajuto Ha População"),
-              ],
-            ),
+      title:Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 1000),
+          child:  Row(
+            children: [
+              Expanded(
+                flex: 3,
+                child: Column(
+                  children: [
+                    Text("CJP"),
+                    Text("Centro De Ajuto Ha População"),
+                  ],
+                ),
+              ),
+              Expanded(child: Icon(Icons.add))
+            ],
           ),
-          Expanded(child: Icon(Icons.add))
-        ],
+        ),
       ),
       elevation: 3,
     );
