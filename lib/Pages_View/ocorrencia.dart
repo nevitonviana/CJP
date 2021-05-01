@@ -57,130 +57,133 @@ class _OcorrenciaState extends State<Ocorrencia> {
                   preferredSize: Size(double.infinity, 72)),
           body: Align(
             alignment: Alignment.center,
-            child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 900),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    height: 100,
-                    margin: EdgeInsets.only(bottom: 30, left: 30),
-                    alignment: Alignment.center,
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: _listaDeImagens.length + 1,
-                        itemBuilder: (context, indice) {
-                          if (indice == _listaDeImagens.length) {
-                            return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8),
-                              child: GestureDetector(
-                                onTap: () {
-                                  _selecionarImagemGaleria();
-                                },
-                                child: CircleAvatar(
-                                  backgroundColor: Colors.grey[400],
-                                  radius: 50,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        Icons.add_a_photo,
-                                        size: 40,
-                                        color: Colors.grey[100],
-                                      ),
-                                      Text(
-                                        "Adicionar",
-                                        style:
-                                            TextStyle(color: Colors.grey[100]),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          }
-                          if (_listaDeImagens.length > 0) {
-                            return Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8),
-                              child: GestureDetector(
-                                onTap: () {
-                                  showDialog(
-                                      context: context,
-                                      builder: (context) => Dialog(
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Image.file(
-                                                    _listaDeImagens[indice]),
-                                                FlatButton(
-                                                    child: Text("Excluir"),
-                                                    textColor: Colors.red,
-                                                    onPressed: () {
-                                                      setState(() {
-                                                        _listaDeImagens
-                                                            .removeAt(indice);
-                                                        Navigator.of(context)
-                                                            .pop();
-                                                      });
-                                                    })
-                                              ],
-                                            ),
-                                          ));
-                                },
-                                child: CircleAvatar(
-                                  radius: 50,
-                                  backgroundImage:
-                                      FileImage(_listaDeImagens[indice]),
-                                  child: Container(
-                                    color: Color.fromRGBO(255, 255, 255, 0.3),
-                                    alignment: Alignment.center,
-                                    child: Icon(
-                                      Icons.delete_forever,
-                                      color: Colors.red,
+            child: Container(
+              color: Colors.grey[200],
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: 900, maxHeight: 900),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      height: 100,
+                      margin: EdgeInsets.only(bottom: 30, left: 30),
+                      alignment: Alignment.center,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: _listaDeImagens.length + 1,
+                          itemBuilder: (context, indice) {
+                            if (indice == _listaDeImagens.length) {
+                              return Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    _selecionarImagemGaleria();
+                                  },
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.grey[400],
+                                    radius: 50,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Icon(
+                                          Icons.add_a_photo,
+                                          size: 40,
+                                          color: Colors.grey[100],
+                                        ),
+                                        Text(
+                                          "Adicionar",
+                                          style:
+                                              TextStyle(color: Colors.grey[100]),
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),
-                              ),
-                            );
-                          }
-                          return Container();
-                        }),
-                  ),
-                  Wrap(
-                    direction: Axis.horizontal,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    spacing: 8.0,
-                    runSpacing: 15.0,
-                    children: [
-                      CustomtextField(
-                        hintText: "Bairro",
-                      ),
-                      CustomtextField(
-                        hintText: "Rua/Av",
-                      ),
-                      CustomtextField(
-                        hintText: "Nome Da Ocorneica",
-                      ),
-                      CustomtextField(
-                        hintText: "Descrição",
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: 50,
-                    height: 30,
-                  ),
-                  Center(
-                      child: RaisedButton(
-                        padding: EdgeInsets.all(20),
-                    onPressed: (){},
-                    child: Text("Envidar"),
-                    elevation: 3,
-                        color: Colors.cyanAccent[100],
-                  ))
-                ],
+                              );
+                            }
+                            if (_listaDeImagens.length > 0) {
+                              return Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8),
+                                child: GestureDetector(
+                                  onTap: () {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) => Dialog(
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Image.file(
+                                                      _listaDeImagens[indice]),
+                                                  FlatButton(
+                                                      child: Text("Excluir"),
+                                                      textColor: Colors.red,
+                                                      onPressed: () {
+                                                        setState(() {
+                                                          _listaDeImagens
+                                                              .removeAt(indice);
+                                                          Navigator.of(context)
+                                                              .pop();
+                                                        });
+                                                      })
+                                                ],
+                                              ),
+                                            ));
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 50,
+                                    backgroundImage:
+                                        FileImage(_listaDeImagens[indice]),
+                                    child: Container(
+                                      color: Color.fromRGBO(255, 255, 255, 0.3),
+                                      alignment: Alignment.center,
+                                      child: Icon(
+                                        Icons.delete_forever,
+                                        color: Colors.red,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            return Container();
+                          }),
+                    ),
+                    Wrap(
+                      direction: Axis.horizontal,
+                      crossAxisAlignment: WrapCrossAlignment.center,
+                      spacing: 8.0,
+                      runSpacing: 15.0,
+                      children: [
+                        CustomtextField(
+                          hintText: "Bairro",
+                        ),
+                        CustomtextField(
+                          hintText: "Rua/Av",
+                        ),
+                        CustomtextField(
+                          hintText: "Nome Da Ocorneica",
+                        ),
+                        CustomtextField(
+                          hintText: "Descrição",
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: 50,
+                      height: 30,
+                    ),
+                    Center(
+                        child: RaisedButton(
+                          padding: EdgeInsets.all(20),
+                      onPressed: (){},
+                      child: Text("Envidar"),
+                      elevation: 3,
+                          color: Colors.cyanAccent[100],
+                    ))
+                  ],
+                ),
               ),
             ),
           ));

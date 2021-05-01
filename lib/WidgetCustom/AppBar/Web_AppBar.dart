@@ -21,7 +21,7 @@ class Desktop_AppBar_Custom extends StatelessWidget {
                   ],
                 ),
               ),
-              Expanded(child: Icon(Icons.add))
+              Expanded(child: Icon(Icons.add,))
             ],
           ),
         ),

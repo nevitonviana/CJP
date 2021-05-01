@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     title: "CJP",
-   initialRoute: "/login",
+   initialRoute: "/home",
     onGenerateRoute: RouteGererator.generateRoute,
   ));
 }

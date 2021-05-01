@@ -1,7 +1,6 @@
 import 'package:cjp/WidgetCustom/Sections/List.dart';
 import 'package:cjp/WidgetCustom/AppBar/Web_AppBar.dart';
 import 'package:cjp/WidgetCustom/AppBar/Mobile_AppBar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../BreakPoints.dart';
 import '../Route.dart';
@@ -12,12 +11,29 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String _bairroSelecionado;
+  List<DropdownMenuItem<String>> _selecionarBairro = List();
+
+  _BuscoBairrosDoBDDropDown() {
+    _selecionarBairro.add(DropdownMenuItem(
+      child: Text("boissucanga"),
+      value: "boissucanga",
+    ));
+  }
+
+  @override
+  void initState() {
+    _BuscoBairrosDoBDDropDown();
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
         return Scaffold(
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.white,
           appBar: constraints.maxWidth < mobile_breakPoint
               ? PreferredSize(
                   preferredSize: Size(double.infinity, 56),
@@ -28,33 +44,29 @@ class _HomeState extends State<Home> {
           body: Align(
             alignment: Alignment.topCenter,
             child: ConstrainedBox(
-              constraints: BoxConstraints(maxWidth: 1000),
+              constraints: BoxConstraints(maxWidth: 900),
               child: ListView(
                 children: [
                   Container(
                     height: 45,
                     margin: EdgeInsets.all(15),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment:
+                          constraints.maxWidth < mobile_breakPoint
+                              ? MainAxisAlignment.center
+                              : MainAxisAlignment.end,
                       children: [
                         DropdownButton(
+                          items: _selecionarBairro,
                           iconSize: 30,
                           elevation: 6,
-                          icon: Icon(Icons.location_city_rounded,
-                              color: Colors.black),
-                          hint: Text("Cidade"),
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        DropdownButton(
-                          elevation: 6,
-                          icon: Icon(
-                            Icons.location_city_rounded,
-                            color: Colors.black,
-                          ),
-                          hint: Text("Cidade"),
-                          items: [],
+                          hint: Text("Bairro"),
+                          onChanged: (value) {
+                            setState(() {
+                              _bairroSelecionado = value;
+                            });
+                          },
+                          value: _bairroSelecionado,
                         ),
                         SizedBox(
                           width: 10,
@@ -78,12 +90,16 @@ class _HomeState extends State<Home> {
                 ListTile(
                   leading: Icon(Icons.input),
                   title: Text('Bem-Vindo'),
-                  onTap: () => Navigator.pushNamed(context, RouteGererator.rote_Ocorencias),
+                  onTap: () => Navigator.pushNamed(
+                      context, RouteGererator.rote_Ocorencias),
                 ),
                 ListTile(
                   leading: Icon(Icons.settings),
                   title: Text('Configurações'),
-                  onTap: () => {Navigator.of(context).pop()},
+                  onTap: () => {
+                    Navigator.pushNamed(
+                        context, RouteGererator.rote_Detalhe_Ocorencia)
+                  },
                 ),
                 ListTile(
                   leading: Icon(Icons.exit_to_app),
