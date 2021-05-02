@@ -44,7 +44,6 @@ class _OcorrenciaState extends State<Ocorrencia> {
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context);
     return LayoutBuilder(builder: (context, constraints) {
       return Scaffold(
           backgroundColor: Colors.grey[350],

@@ -1,3 +1,4 @@
+
 import 'package:cjp/Route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -20,39 +21,42 @@ class _ListaState extends State<Lista> {
       ),
       itemCount: 16,
       itemBuilder: (context, index) {
-        return Container(
-          margin: EdgeInsets.all(8),
+        return GestureDetector(
+          onTap: ()=>Navigator.pushNamed(context, RouteGererator.rote_Ocorencias),
           child: Card(
-            color: Colors.grey[200],
-            child: Column(
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    margin: EdgeInsets.all(10),
-                    color: Colors.blue,
+              margin: EdgeInsets.all(8),
+              elevation: 3,
+              color: Colors.grey[200],
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.all(10),
+                      color: Colors.blue,
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: ListTile(
-                          title: Text("Bairro:"),
-                          subtitle: Text("Boissucanga"),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: ListTile(
+                            title: Text("Bairro:"),
+                            subtitle: Text("Boissucanga"),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: ListTile(
-                    title: Text("ocorrido"),
-                    subtitle: Text("ponte caida"),
+                  Expanded(
+                    child: ListTile(
+                      title: Text("ocorrido"),
+                      subtitle: Text("ponte caida"),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
+
           ),
         );
       },

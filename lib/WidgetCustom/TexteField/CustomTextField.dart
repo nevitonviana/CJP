@@ -3,12 +3,12 @@ import 'package:flutter/services.dart';
 
 class CustomtextField extends StatelessWidget {
 
-  final TextEditingController textEditingControllercontroller;
+  final TextEditingController textEditingController;
   final TextInputType textInputType;
   final String hintText;
   final Icon icon;
 
-  CustomtextField({this.hintText, this.textEditingControllercontroller, this.textInputType = TextInputType.text, this.icon});
+  CustomtextField({this.hintText, this.textEditingController, this.textInputType = TextInputType.text, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class CustomtextField extends StatelessWidget {
       margin: EdgeInsets.only(left: 15, right: 15),
       width: 350,
       child: TextField(
-        controller: this.textEditingControllercontroller,
+        controller: this.textEditingController,
         keyboardType: this.textInputType,
         decoration: InputDecoration(
           hintText: this.hintText,
