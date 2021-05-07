@@ -73,7 +73,10 @@ class _LoginState extends State<Login> {
                       color: Colors.grey,
                       height: 80,
                       child: Center(
-                        child: Text("Login", style: TextStyle(color: Colors.black, fontSize: 20),),
+                        child: Text(
+                          "Login",
+                          style: TextStyle(color: Colors.black, fontSize: 20),
+                        ),
                       ),
                     ),
                   ),
@@ -90,15 +93,16 @@ class _LoginState extends State<Login> {
                               color: Colors.red,
                             ),
                           ),
+
                         ),
                         CustomtextField(
                           textEditingController: _controllerEmail,
-                          hintText: "Usuario",
-                          icon: Icon(Icons.account_circle),
+                          hintText: "E-mail:",
+                          icon: Icon(Icons.lock_outline),
                         ),
                         CustomtextField(
                           textEditingController: _controllerSenha,
-                          hintText: "Senha",
+                          hintText: "Senha:",
                           icon: Icon(Icons.lock_outlined),
                         ),
                         RaisedButton(

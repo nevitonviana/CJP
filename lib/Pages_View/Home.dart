@@ -1,6 +1,8 @@
+import 'package:cjp/Model/Usuario.dart';
 import 'package:cjp/WidgetCustom/Sections/List.dart';
 import 'package:cjp/WidgetCustom/AppBar/Web_AppBar.dart';
 import 'package:cjp/WidgetCustom/AppBar/Mobile_AppBar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../BreakPoints.dart';
 import '../Route.dart';
@@ -11,20 +13,26 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   String _bairroSelecionado;
   List<DropdownMenuItem<String>> _selecionarBairro = List();
 
-  _BuscoBairrosDoBDDropDown() {
+  _BuscoBairrosDoBDDropDown()async {
+    FirebaseFirestore db = FirebaseFirestore.instance;
+    QuerySnapshot querySnapshot = await db.collection("ocorencias").where("bairro").get();
+
+
     _selecionarBairro.add(DropdownMenuItem(
       child: Text("boissucanga"),
       value: "boissucanga",
     ));
   }
 
+
+
   @override
   void initState() {
     _BuscoBairrosDoBDDropDown();
-
     super.initState();
   }
 
@@ -46,6 +54,7 @@ class _HomeState extends State<Home> {
             child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 900),
               child: ListView(
+
                 children: [
                   Container(
                     height: 45,

@@ -13,6 +13,7 @@ class _ListaState extends State<Lista> {
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
         crossAxisSpacing: 3,
         mainAxisSpacing: 3,

@@ -8,8 +8,6 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-
-
   /*FirebaseAuth auth = FirebaseAuth.instance;
   String email = "neviton@hotmail.com";
   String senha = "123456";
@@ -21,15 +19,11 @@ void main() async {
     print("erro: " + erro.toString());
   });*/
   runApp(MaterialApp(
-    theme: ThemeData(
-
-    ),//ou usar o temaPadrao
+    theme: ThemeData(), //ou usar o temaPadrao
     title: "CJP",
     initialRoute: "/login",
     onGenerateRoute: RouteGererator.generateRoute,
   ));
 }
 
-final ThemeData temaPadrao = ThemeData(
-
-);
+final ThemeData temaPadrao = ThemeData();
