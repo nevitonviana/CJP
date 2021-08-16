@@ -13,10 +13,7 @@
 *.iml
 *.ipr
 *.iws
-.idea/
-ios
-android
-.idea
+
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
@@ -33,6 +30,7 @@ android
 .pub-cache/
 .pub/
 /build/
+.idea/
 
 # Web related
 lib/generated_plugin_registrant.dart
@@ -47,3 +45,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+ios/
+android/
+.idea
+.firebase
