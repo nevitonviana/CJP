@@ -1,3 +1,8 @@
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/nevitonviana/Projeto_CJP_V1)
+![GitHub followers](https://img.shields.io/github/followers/nevitonviana?style=social)
+![GitHub](https://img.shields.io/github/license/nevitonviana/Projeto_CJP_V1)  
+
 # Projeto CJP
 
 o na criação do Projeto foi utilizando as tecnologias 
