@@ -13,6 +13,8 @@ class _LoginState extends State<Login> {
   TextEditingController _controllerSenha = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
   String _mensagemDeErro = "";
+  List _listaBairro = List();
+  bool _verSenha = true;
 
   _fazerLogin() async {
     var email = _controllerEmail.text;
@@ -22,7 +24,8 @@ class _LoginState extends State<Login> {
         auth
             .signInWithEmailAndPassword(email: email, password: password)
             .then((value) {
-          Navigator.pushNamed(context, RouteGererator.rota_Home);
+          Navigator.pushNamedAndRemoveUntil(
+              context, RouteGererator.rota_Home, (route) => false);
         }).catchError((onError) {
           setState(() {
             _mensagemDeErro = "Email ou Senha invalido";
@@ -42,8 +45,11 @@ class _LoginState extends State<Login> {
 
   Future _verificarUserLogin() async {
     User userlogin = await auth.currentUser;
+
     if (userlogin != null) {
-      Navigator.pushNamed(context, RouteGererator.rota_Home);
+      //TODO verificar
+      Navigator.pushNamed(context, RouteGererator.rota_Home,
+          arguments: _listaBairro);
     }
   }
 
@@ -59,9 +65,9 @@ class _LoginState extends State<Login> {
     return Container(
       color: Color(0xFFF6F1CA),
       child: Center(
-        child: Card(
-          elevation: 4,
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Card(
+            elevation: 4,
             child: Container(
               height: mediaQuery.size.height * 0.7,
               width: 500,
@@ -75,7 +81,10 @@ class _LoginState extends State<Login> {
                       child: Center(
                         child: Text(
                           "Login",
-                          style: TextStyle(color: Colors.black, fontSize: 20),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),
                         ),
                       ),
                     ),
@@ -93,33 +102,72 @@ class _LoginState extends State<Login> {
                               color: Colors.red,
                             ),
                           ),
-
                         ),
                         CustomtextField(
                           textEditingController: _controllerEmail,
-                          hintText: "E-mail:",
-                          icon: Icon(Icons.lock_outline),
+                          textInputType: TextInputType.emailAddress,
+                          labelText: "E-mail:",
+                          hintText: "Ex:exemplo@exemplo.com",
+                          icon: Icon(
+                            Icons.email,
+                            color: Colors.black87,
+                          ),
                         ),
                         CustomtextField(
                           textEditingController: _controllerSenha,
-                          hintText: "Senha:",
-                          icon: Icon(Icons.lock_outlined),
+                          labelText: "Senha:",
+                          hintText: "EX:123456",
+                          icon: Icon(
+                            Icons.lock_outlined,
+                            color: Colors.black87,
+                          ),
+                          obscureText: _verSenha,
+                          suffix: GestureDetector(
+                            onTap: () {
+                              setState(
+                                () {
+                                  _verSenha = !_verSenha;
+                                },
+                              );
+                            },
+                            child: Icon(
+                              _verSenha
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          ),
                         ),
                         RaisedButton(
                           onPressed: () => _fazerLogin(),
                           elevation: 3,
                           color: Colors.cyan,
-                          padding: EdgeInsets.all(20),
+                          padding: EdgeInsets.only(
+                              right: 50, left: 50, bottom: 15, top: 15),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                           ),
-                          child: Text("Entra"),
+                          child: Text(
+                            "Entrar",
+                            style: TextStyle(color: Colors.black, fontSize: 18),
+                          ),
                         ),
                         GestureDetector(
                           onTap: () => Navigator.pushNamed(
                               context, RouteGererator.rota_Registro),
-                          child: Text("Cadastra-se"),
-                        )
+                          child: Column(
+                            children: [
+                              Text(
+                                "Cadastra-se",
+                                style: TextStyle(
+                                  color: Color(0xff1a1a1a),
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ),
                   )

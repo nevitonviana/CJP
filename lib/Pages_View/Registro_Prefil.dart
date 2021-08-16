@@ -4,6 +4,7 @@ import 'package:cjp/WidgetCustom/TexteField/CustomTextField.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Registro_Prefil extends StatefulWidget {
@@ -20,6 +21,7 @@ class _Registro_PrefilState extends State<Registro_Prefil> {
   TextEditingController _controllerRepetirSenha = TextEditingController();
   String _mensagemDeErro = "";
   Usuario _usuario = Usuario();
+  bool _verSenha = true;
 
   _validar() {
     String _nome = _controllerNomeConpleto.text;
@@ -64,10 +66,11 @@ class _Registro_PrefilState extends State<Registro_Prefil> {
         .createUserWithEmailAndPassword(
             email: _usuario.email, password: _usuario.senha)
         .then((Users) {
-          usuario.id = Users.user.uid;
+      usuario.id = Users.user.uid;
       db.collection("usuarios").doc(Users.user.uid).set(usuario.toMap());
       Navigator.pushNamedAndRemoveUntil(
-          context, RouteGererator.rota_Home, (route) => false, arguments: _usuario);
+          context, RouteGererator.rota_Home, (route) => false,
+          arguments: Users.user.uid);
     }).catchError((onError) {
       print("ERRO: " + onError.toString());
       setState(() {
@@ -84,9 +87,8 @@ class _Registro_PrefilState extends State<Registro_Prefil> {
       child: Center(
         child: Card(
           elevation: 3,
-          child: SingleChildScrollView(
-            child: Container(
-              height: mediaQuery.size.height * 0.7,
+          child: Container(
+              height: mediaQuery.size.height * (kIsWeb?0.7:0.8),
               width: 500,
               color: Colors.grey[200],
               child: Column(
@@ -95,9 +97,12 @@ class _Registro_PrefilState extends State<Registro_Prefil> {
                     child: Container(
                       color: Colors.grey,
                       child: Center(
-                        child: Text("Cadastrar-se",
-                            style:
-                                TextStyle(color: Colors.black, fontSize: 20)),
+                        child: Text("Cadastrar-Se",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            )),
                       ),
                     ),
                   ),
@@ -112,48 +117,87 @@ class _Registro_PrefilState extends State<Registro_Prefil> {
                   ),
                   Expanded(
                     flex: 6,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    child: ListView(
                       children: [
                         CustomtextField(
                           textEditingController: _controllerNomeConpleto,
-                          hintText: "Nome Completo",
-                          icon: Icon(Icons.account_box_outlined),
+                          labelText: "Nome Completo:",
+                          hintText: "Ex: Joãozinho Silva Santos",
+                          icon: Icon(Icons.account_box_outlined,
+                              color: Colors.black),
                         ),
                         CustomtextField(
                           textEditingController: _controllerBairro,
-                          hintText: "Bairro",
-                          icon: Icon(Icons.location_city_outlined),
+                          labelText: "Bairro:",
+                          hintText: "Ex: juquehy",
+                          icon: Icon(Icons.location_city_outlined,
+                              color: Colors.black),
                         ),
                         CustomtextField(
                           textEditingController: _controllerCidade,
-                          hintText: "Cidade",
-                          icon: Icon(Icons.location_city_sharp),
+                          labelText: "Cidade:",
+                          hintText: "Ex: São Paulo",
+                          icon: Icon(Icons.location_city_sharp,
+                              color: Colors.black),
                         ),
                         CustomtextField(
                           textEditingController: _controllerEmail,
-                          hintText: "E-Mail",
-                          icon: Icon(Icons.mail_outline_sharp),
+                          labelText: "E-Mail:",
+                          hintText: "EX: exemplo@exemplo.com",
+                          icon: Icon(Icons.mail_outline_sharp,
+                              color: Colors.black),
                         ),
                         CustomtextField(
                           textEditingController: _controllerSenha,
-                          hintText: "Senha:",
-                          icon: Icon(Icons.lock_outline),
+                          labelText: "Senha:" ,
+                          hintText: "Senha com mais de 5 caracteres",
+                          icon: Icon(Icons.lock_outline, color: Colors.black),
+                          obscureText: _verSenha,
+                          suffix: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _verSenha = !_verSenha;
+                                });
+                              },
+                              child: Icon(
+                                _verSenha
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              )),
                         ),
                         CustomtextField(
                           textEditingController: _controllerRepetirSenha,
-                          hintText: "Senha",
-                          icon: Icon(Icons.lock_outlined),
-                        ),
-                        RaisedButton(
-                          onPressed: () => _validar(),
-                          elevation: 3,
-                          color: Colors.cyan,
-                          padding: EdgeInsets.all(20),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
+                          labelText: "Repetir Senha:",
+                          hintText: "Repita a senha informado acima",
+                          icon: Icon(
+                            Icons.lock_outlined,
+                            color: Colors.black,
                           ),
-                          child: Text("Entra"),
+                          obscureText: _verSenha,
+                          suffix: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _verSenha = !_verSenha;
+                                });
+                              },
+                              child: Icon(
+                                _verSenha
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              )),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 20, left: 100, right: 100, bottom: kIsWeb ? 0 : 30),
+                          child: RaisedButton(
+                            onPressed: () => _validar(),
+                            elevation: 3,
+                            color: Colors.cyan,
+                            padding: EdgeInsets.all(20),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            ),
+                            child: Text("Entra"),
+                          ),
                         ),
                       ],
                     ),
@@ -161,7 +205,7 @@ class _Registro_PrefilState extends State<Registro_Prefil> {
                 ],
               ),
             ),
-          ),
+
         ),
       ),
     );
