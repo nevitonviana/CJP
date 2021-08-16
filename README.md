@@ -18,7 +18,7 @@ alguma coisa para ser resolvida
 
 ### images de como está o projeto CJP até então
 
-###### PS em produção do varsão 2
+###### PS em produção a varsão 2
 
 ##
 
