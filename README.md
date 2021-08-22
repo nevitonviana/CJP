@@ -23,16 +23,15 @@ alguma coisa para ser resolvida
 
 ### images de como está o projeto CJP até então
 
-###### PS em produção a varsão 2
+
 
 ##
+<img Height=400 width=200 src="https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshothome.png"/><img Height=400 width=200 src="https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotdetalhe.png"/>
+<img Height=400 width=200 src="https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotmenu.png"/>
+<img Height=520 width=420 src="https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotlogin.png"/>
+<img Height=520 width=420 src="https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotwebhome.png"/>
+<img Height=520 width=420 src="https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotwebminha.png"/>
+<img Height=520 width=420 src="https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotwebadd.png"/>
 
-![imagelogin](https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotlogin.png)
-![imagehome](https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshothome.png)
-![imagewebhome](https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotwebhome.png)
-![imagedetanha](https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotdetalhe.png)
-![imagemenu](https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotmenu.png)
-![imagewebminha](https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotwebminha.png)
-![imageadd](https://github.com/nevitonviana/Projeto_CJP_V1/blob/master/Screenshot/Screenshotwebadd.png)
-
+###### Em produção a varsão 2
 
