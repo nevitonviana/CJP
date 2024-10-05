@@ -5,7 +5,7 @@
 
 # Projeto CJP
 
-o na criação do Projeto foi utilizando as tecnologias 
+Na criação do Projeto foi utilizando as tecnologias 
 <img src="https://img.icons8.com/color/30/000000/dart.png"/>
 <img  src="https://img.icons8.com/color/30/000000/flutter.png"/>
 <img src="https://img.icons8.com/color/30/000000/google-firebase-console.png"/>
